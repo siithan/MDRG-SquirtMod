@@ -51,6 +51,7 @@ Planned for future versions:
 - [ ] Shower pose support
 - [ ] Context sensitive lingering drip spawning
 - [ ] Contact with the MC's body parts: splashes, drops that stick and drip down, etc.
+- [ ] Experiment with different artstyles
 - [ ] Wet decals that linger after the squirt
 - [ ] Pulses synced with Jun's quivers
 - [ ] Exaggerating Jun's quivers
