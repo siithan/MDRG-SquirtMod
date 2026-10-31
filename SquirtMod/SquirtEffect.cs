@@ -112,8 +112,7 @@ public static class SquirtEffect
     private static string _spriteSignature = "";
     private static bool _hotkeyBroken;
 
-    private static string ArtFolder => Path.Combine(MelonEnvironment.UserDataDirectory, "SquirtMod");
-    private static string DropPath  => Path.Combine(ArtFolder, "drop.png");
+    private static string ArtFolder => Path.Combine(MelonEnvironment.ModsDirectory, "SquirtMod");
 
     // ---------------------------------------------------------------- per frame
 

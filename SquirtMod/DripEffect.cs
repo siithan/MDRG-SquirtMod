@@ -62,7 +62,7 @@ public static class DripEffect
     private static bool _warnedMissing;
 
     private static string ArtPath =>
-        Path.Combine(MelonEnvironment.UserDataDirectory, "SquirtMod", "drop_stretch.png");
+        Path.Combine(MelonEnvironment.ModsDirectory, "SquirtMod", "drop_stretch.png");
 
     // ---------------------------------------------------------------- spawning
 
