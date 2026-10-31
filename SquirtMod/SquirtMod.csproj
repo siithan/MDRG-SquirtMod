@@ -1,0 +1,113 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
+
+
+		<GameDir>F:\Games\MDRG Modding</GameDir>
+
+
+		<GameExe>My Dystopian Robot Girlfriend.exe</GameExe>
+
+		<Il2CppAssemblies>$(GameDir)\MelonLoader\Il2CppAssemblies</Il2CppAssemblies>
+		<MelonLoaderNet6>$(GameDir)\MelonLoader\net6</MelonLoaderNet6>
+		<ModsDir>$(GameDir)\Mods</ModsDir>
+
+		<!-- Lets F5 in Visual Studio launch the game after building -->
+		<StartAction>Program</StartAction>
+		<StartProgram>$([System.IO.Path]::GetFullPath('$(GameDir)\$(GameExe)'))</StartProgram>
+	</PropertyGroup>
+
+	<!-- Clear error messages if the path above is wrong -->
+	<Target Name="ValidateSetup" BeforeTargets="BeforeBuild">
+		<Error Condition="!Exists('$(GameDir)')" Text="GameDir does not exist: $(GameDir)" />
+		<Error Condition="!Exists('$(GameDir)\MelonLoader')" Text="MelonLoader not found in $(GameDir); is this the correct game folder?" />
+	</Target>
+
+	<!-- Don't copy referenced DLLs into the output folder; the game already has them -->
+	<ItemDefinitionGroup>
+		<Reference>
+			<Private>false</Private>
+		</Reference>
+	</ItemDefinitionGroup>
+
+	<!-- MelonLoader framework references -->
+	<ItemGroup>
+		<Reference Include="MelonLoader">
+			<HintPath>$(MelonLoaderNet6)\MelonLoader.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppInterop.Runtime">
+			<HintPath>$(MelonLoaderNet6)\Il2CppInterop.Runtime.dll</HintPath>
+		</Reference>
+        <Reference Include="0Harmony">
+            <HintPath>$(MelonLoaderNet6)\0Harmony.dll</HintPath>
+        </Reference>
+        
+	</ItemGroup>
+
+	<!-- MDRG Il2Cpp assemblies -->
+	<ItemGroup>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>$(Il2CppAssemblies)\Assembly-CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppFungus">
+			<HintPath>$(Il2CppAssemblies)\Il2CppFungus.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppGameAssembly">
+			<HintPath>$(Il2CppAssemblies)\Il2CppGameAssembly.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppIC.Utility.Runtime">
+			<HintPath>$(Il2CppAssemblies)\Il2CppIC.Utility.Runtime.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppIC.UI">
+			<HintPath>$(Il2CppAssemblies)\Il2CppIC.UI.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2CppLive2D.Cubism">
+			<HintPath>$(Il2CppAssemblies)\Il2CppLive2D.Cubism.dll</HintPath>
+		</Reference>
+		<Reference Include="Il2Cppmscorlib">
+			<HintPath>$(Il2CppAssemblies)\Il2Cppmscorlib.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AudioModule">
+			<HintPath>$(Il2CppAssemblies)\UnityEngine.AudioModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>$(Il2CppAssemblies)\UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.IMGUIModule">
+			<HintPath>$(Il2CppAssemblies)\UnityEngine.IMGUIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.InputLegacyModule">
+			<HintPath>$(Il2CppAssemblies)\UnityEngine.InputLegacyModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TextRenderingModule">
+			<HintPath>$(Il2CppAssemblies)\UnityEngine.TextRenderingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UI">
+			<HintPath>$(Il2CppAssemblies)\UnityEngine.UI.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UIModule">
+			<HintPath>$(Il2CppAssemblies)\UnityEngine.UIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestAudioModule">
+			<HintPath>$(Il2CppAssemblies)\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestModule">
+			<HintPath>$(Il2CppAssemblies)\UnityEngine.UnityWebRequestModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ImageConversionModule">
+			<HintPath>$(Il2CppAssemblies)\UnityEngine.ImageConversionModule.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<!-- One click: after every successful build, copy the mod into the game's Mods folder -->
+	<Target Name="DeployMod" AfterTargets="Build">
+		<Delete Files="$(ModsDir)\$(TargetFileName)" ContinueOnError="true" />
+		<Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsDir)" />
+		<Message Importance="high" Text="Deployed $(TargetFileName) to $(ModsDir)" />
+	</Target>
+
+</Project>
