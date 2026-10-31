@@ -42,13 +42,15 @@ Settings are public static fields, editable live with [MDRGUnityExplorer](https:
 
 - Shower pose is not integrated yet.
 - Tested with game version 0.97.12 only.
+- Lingering drips can look a little janky in missionary
 
 ## Roadmap
 
 Planned for future versions:
 
 - [ ] Shower pose support
-- [ ] Contact with the MC's hand and penis: splashes, drops that stick and drip down
+- [ ] Context sensitive lingering drip spawning
+- [ ] Contact with the MC's body parts: splashes, drops that stick and drip down, etc.
 - [ ] Wet decals that linger after the squirt
 - [ ] Pulses synced with Jun's quivers
 - [ ] Exaggerating Jun's quivers
