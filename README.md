@@ -23,7 +23,7 @@ Other game versions may work, but game updates can break mods. PC only: MelonLoa
 1. Install [MelonLoader](https://github.com/LavaGang/MelonLoader) on the game and launch it once.
 2. Download `SquirtMod.zip` from the [Releases](../../releases) page.
 3. Extract it into the game's `Mods` folder
-4. Launch the game. The MelonLoader console should list **Squirt Mod 0.1.1**.
+4. Launch the game. The MelonLoader console should list **Squirt Mod v0.1.1**.
 
 ## Custom art
 
