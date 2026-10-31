@@ -4,19 +4,6 @@ using UnityEngine;
 
 namespace SquirtMod;
 
-/// <summary>
-/// Level 1: pulsed bursts of drops on orgasm, with per-pose settings.
-///
-///   SquirtEffect.Spawn(brain)           -> start the pulses (call it in the orgasm block)
-///   SquirtEffect.Tick(brain)            -> call every frame (releases and moves drops; F8 = test)
-///   SquirtEffect.Test()                 -> test, callable from UnityExplorer (Evaluate)
-///   SquirtEffect.LogDrawables("Xray")   -> log position/depth of drawables whose name contains the text
-///
-/// Art: put a PNG at  [game folder]\UserData\SquirtMod\drop.png
-///   - Draw it as if FALLING STRAIGHT DOWN (round end at the bottom, tail at the top).
-///   - If the file is missing or fails to load, a placeholder drawn in code is used.
-///   - Save over the file while the game runs: the next burst picks up the new version.
-/// </summary>
 public static class SquirtEffect
 {
     // ---------------------------------------------------------------- per-pose settings
